@@ -1,7 +1,7 @@
-FROM openjdk:17-jdk-alpine as build
+FROM maven:3.8.5-openjdk-17-slim as build
 WORKDIR /app
 COPY . .
-RUN ./mvnw clean package 
+RUN mvn clean package 
 
 FROM openjdk:17-jdk-alpine as release
 COPY --from=build /app/target/*.jar /app.jar
