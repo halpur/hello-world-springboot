@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+    name: "helloworldaks-b9d6"
+    labels:
+        app: "helloworldaks-b9d6"
+    annotations:
+        kubernetes.io/ingress.class: addon-http-application-routing
+spec:
+    rules:
+        - host: helloworld-ns-helloworldaks-b9d6.7f6197cb89c648ee930d.northeurope.aksapp.io
+          http:
+            paths:
+            - path: /
+              backend:
+                serviceName: "helloworldaks-b9d6"
+                servicePort: 80
